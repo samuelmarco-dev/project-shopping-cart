@@ -20,5 +20,8 @@
     "homepage": "https://github.com/samuelmarco-dev/project-shopping-cart#readme",
     "devDependencies": {
         "eslint": "^9.6.0"
+    },
+    "dependencies": {
+        "uuid": "^10.0.0"
     }
 }
