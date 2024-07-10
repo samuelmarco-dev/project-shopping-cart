@@ -1,4 +1,5 @@
 import Product from "./Product.js";
+import { menu } from "../utils/menu.js";
 
 export default class Cart {
     constructor() {
@@ -8,6 +9,30 @@ export default class Cart {
         this.cart = new Array();
         this.tax = 0.17;
         this.paidOut = false;
+    }
+
+    showCart() {
+        console.log("🎁 Items in Cart:");
+        this.cart.forEach((product, index) => {
+            console.log(
+                `${index + 1}: ${product.name} - R$ ${product.price.toFixed(
+                    2
+                )} - Amount: ${product.amount} - Subtotal: R$ ${product
+                    .getSubTotalPrice()
+                    .toFixed(2)}`
+            );
+        });
+        menu.separation();
+        console.log(`💵 Total: R$ ${this.getTotalPrice().toFixed(2)}`);
+        menu.separation();
+    }
+
+    /**
+     * @param {number} index
+     */
+
+    findProduct(index) {
+        return index >= 0 && index < this.cart.length ? this.cart[index] : false;
     }
 
     /**
@@ -26,6 +51,10 @@ export default class Cart {
         this.cart = this.cart.filter((p) => p._id !== product._id);
     }
 
+    removeAllProducts() {
+        this.cart = [];
+    }
+
     /**
      * @param {Product} product
      * @param {number} amount
@@ -34,10 +63,8 @@ export default class Cart {
     updateProductAmount(product, amount) {
         const index = this.cart.findIndex((p) => p._id === product._id);
 
-        if (!(index === -1)) {
-            this.cart[index].amount = amount;
-            return true;
-        } else return false;
+        if (!(index === -1) && amount >= 1) this.cart[index].amount = amount;
+        else console.log('Unable to update quantity of this product');
     }
 
     updatePaidOut() {
@@ -71,7 +98,9 @@ export default class Cart {
      * @returns {number}
      */
     getPriceToPay() {
-        return this.getTotalPrice() + this.getTotalPriceTax();
+        return !this.paidOut
+            ? this.getTotalPrice() + this.getTotalPriceTax()
+            : 0;
     }
 
     /**

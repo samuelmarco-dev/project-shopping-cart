@@ -30,7 +30,7 @@ export default class Product {
     }
 
     decrementAmount() {
-        this.amount > valueUnitary ? this.amount-- : valueUnitary;
+        this.amount > valueUnitary ? this.amount-- : false;
     }
 
     getSubTotalPrice() {
