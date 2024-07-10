@@ -6,6 +6,8 @@ export default class Cart {
          * @type {Product[]}
          */
         this.cart = new Array();
+        this.tax = 0.17;
+        this.paidOut = false;
     }
 
     /**
@@ -34,6 +36,10 @@ export default class Cart {
         this.cart[index].amount = amount;
     }
 
+    updatePaidOut () {
+        this.paidOut = true;
+    }
+
     /**
      * @returns {Product[]}
      */
@@ -51,6 +57,17 @@ export default class Cart {
             (total, product) => total + product.getSubTotalPrice(),
             0
         );
+    }
+
+    getTotalPriceTax() {
+        return this.getTotalPrice() * this.tax;
+    }
+
+    /**
+     * @returns {number}
+     */
+    getPriceToPay() {
+        return this.getTotalPrice() + this.getTotalPriceTax();
     }
 
     /**
