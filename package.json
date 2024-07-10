@@ -22,6 +22,7 @@
         "eslint": "^9.6.0"
     },
     "dependencies": {
+        "prompt-sync": "^4.2.0",
         "uuid": "^10.0.0"
     }
 }
