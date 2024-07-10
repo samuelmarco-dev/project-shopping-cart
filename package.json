@@ -1,0 +1,24 @@
+{
+    "name": "project-shopping-cart",
+    "version": "1.0.0",
+    "description": "e-commerce shopping cart simulation",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "node --watch src/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/samuelmarco-dev/project-shopping-cart.git"
+    },
+    "author": "Samuel Marco",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/samuelmarco-dev/project-shopping-cart/issues"
+    },
+    "homepage": "https://github.com/samuelmarco-dev/project-shopping-cart#readme",
+    "devDependencies": {
+        "eslint": "^9.6.0"
+    }
+}
