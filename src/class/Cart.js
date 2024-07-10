@@ -24,7 +24,7 @@ export default class Cart {
         });
         menu.separation();
         console.log(`💵 Total: R$ ${this.getTotalPrice().toFixed(2)}`);
-        console.log(`💵 Total with Tax: R$ ${this.getTotalPriceTax().toFixed(2)}`);
+        console.log(`💵 Total with Tax: R$ ${this.getPriceToPay().toFixed(2)}`);
         menu.separation();
     }
 
