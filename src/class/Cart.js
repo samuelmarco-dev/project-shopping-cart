@@ -33,10 +33,14 @@ export default class Cart {
 
     updateProductAmount(product, amount) {
         const index = this.cart.findIndex((p) => p._id === product._id);
-        this.cart[index].amount = amount;
+
+        if (!(index === -1)) {
+            this.cart[index].amount = amount;
+            return true;
+        } else return false;
     }
 
-    updatePaidOut () {
+    updatePaidOut() {
         this.paidOut = true;
     }
 
